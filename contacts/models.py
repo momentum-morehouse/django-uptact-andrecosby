@@ -1,5 +1,7 @@
-from django.db import models
+from tkinter.constants import CASCADE
+
 from django.core.validators import RegexValidator
+from django.db import models
 from localflavor.us.models import USStateField, USZipCodeField
 
 
@@ -20,4 +22,9 @@ class Contact(models.Model):
     city = models.CharField(max_length=255, null=True, blank=True)
     state = USStateField(null=True, blank=True)
     zip_code = USZipCodeField(null=True, blank=True)
+
+class Note(models.Model):
+    text = models.TextField()
+    date_time = models.DateTimeField(auto_now_add=True)
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name="notes")
 

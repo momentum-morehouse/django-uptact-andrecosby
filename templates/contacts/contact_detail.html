@@ -1,13 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h1>All Contacts</h1>
 
-<p><a href="{% url 'add_contact' %}">Add New Contact</a></p>
-
-<div class="flex flex-wrap">
-  {% for contact in contacts %}
-  <div class="w-33 pa3">
+<div class="w-33 pa3">
     <h2>{{ contact.name }}</h2>
 
     
@@ -38,6 +32,8 @@
     </div>
     {% endif %}
 
+    {% endblock %}
+
     {% if contact.email %}
     <div class="flex">
       <div class="pr2"><i class="icofont-ui-email"></i></div>
@@ -50,6 +46,3 @@
       <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
     </p>
   </div>
-  {% endfor %}
-</div>  
-{% endblock %}
